@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حاسبة تحويل الاتفاقية المبسطة للأسهم المستقبلية - عُمان</title>
+    <title>حاسبة تحويل الاتفاقية المبسطة للأسهم المستقبلية - سلطنة عُمان</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -113,6 +113,24 @@
             backdrop-filter: blur(10px);
         }
         
+        .result-item-option1 {
+            background: rgba(40, 167, 69, 0.3);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(40, 167, 69, 0.5);
+        }
+        
+        .result-item-option2 {
+            background: rgba(220, 53, 69, 0.3);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(220, 53, 69, 0.5);
+        }
+        
         .result-label {
             font-size: 14px;
             opacity: 0.9;
@@ -197,7 +215,7 @@
 </head>
 <body>
     <div class="container">
-        <h1> حاسبة تحويل الاتفاقية المبسطة للأسهم المستقبلية - سلطنة عُمان</h1>
+        <h1>حاسبة تحويل الاتفاقية المبسطة للأسهم المستقبلية - سلطنة عُمان</h1>
         
         <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px; border-right: 3px solid #00a19f;">
             <h3 style="color: #0a3433; margin-bottom: 15px; text-align: right; font-weight: 700;">📖 ما هي الاتفاقية المبسطة للأسهم المستقبلية؟</h3>
@@ -319,11 +337,11 @@
                     <br><strong>مثال:</strong> إذا دفع المستثمرون الجدد 30 ريال/سهم، سيحصل حامل الاتفاقية على الأفضل من: (١) أسهم بسعر 30 ريال أو (٢) أسهم بسعر الاتفاقية (25 ريال).
                     <br><strong>من العقد - البند 3:</strong> "إذا تم تمويل رأس المال قبل تاريخ الاستحقاق، فسيتم تحويل الاتفاقية للمستثمر تلقائياً إلى أسهم عادية"
                 </div>
-                <div class="result-item">
+                <div class="result-item-option1">
                     <div class="result-label">الخيار الأول: أسهم بسعر الجولة التالية</div>
                     <div class="result-value" id="seriesAShares1">-</div>
                 </div>
-                <div class="result-item">
+                <div class="result-item-option2">
                     <div class="result-label">الخيار الثاني: أسهم بسعر الاتفاقية (حماية للمستثمر)</div>
                     <div class="result-value" id="seriesAShares2">-</div>
                 </div>
@@ -358,11 +376,11 @@
                     <div class="result-label">سعر السيولة لكل سهم</div>
                     <div class="result-value" id="liquidityPrice">-</div>
                 </div>
-                <div class="result-item">
+                <div class="result-item-option1">
                     <div class="result-label">الخيار الأول: استرداد مبلغ الشراء</div>
                     <div class="result-value" id="liquidityOption1">-</div>
                 </div>
-                <div class="result-item">
+                <div class="result-item-option2">
                     <div class="result-label">الخيار الثاني: قيمة الأسهم المحولة في السيولة</div>
                     <div class="result-value" id="liquidityOption2">-</div>
                 </div>
