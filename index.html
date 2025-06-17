@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>حاسبة تحويل الاتفاقية المبسطة للأسهم المستقبلية - عُمان</title>
-    <link href="https://fonts.googleapis.com/css2?family=Arsenal:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arsenal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Arial Unicode MS';
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Arial Unicode MS';
             max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
@@ -69,7 +69,7 @@
             transition: all 0.3s ease;
             background: white;
             text-align: right;
-            font-family: 'Arsenal', sans-serif;
+            font-family: 'Cairo', sans-serif;
         }
         
         input:focus {
@@ -149,7 +149,7 @@
             padding: 10px 15px;
             border-radius: 5px;
             margin: 10px 0;
-            font-family: 'Arsenal', 'Courier New', monospace;
+            font-family: 'Cairo', 'Courier New', monospace;
             font-size: 14px;
             text-align: right;
             direction: rtl;
@@ -178,7 +178,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 20px;
-            font-family: 'Arsenal', sans-serif;
+            font-family: 'Cairo', sans-serif;
         }
         
         .export-btn:hover {
@@ -215,48 +215,63 @@
         </div>
         
         <div class="input-section">
-            <h3 style="color: #0a3433; margin-bottom: 20px; text-align: right; font-weight: 700;">📊 المعاملات المدخلة</h3>
+            <h3 style="color: #0a3433; margin-bottom: 20px; text-align: right; font-weight: 700;">📊 بيانات الاتفاقية الأساسية</h3>
             
             <div class="input-group">
                 <div class="input-item">
                     <label for="currentShares">الأسهم القائمة الحالية</label>
-                    <input type="number" id="currentShares" value="20000" oninput="calculate()">
+                    <input type="number" id="currentShares" value="20000" step="1" oninput="calculate()">
                 </div>
                 
                 <div class="input-item">
                     <label for="nominalValue">القيمة الاسمية الحالية (ريال عُماني)</label>
-                    <input type="number" id="nominalValue" value="1" step="0.01" oninput="calculate()">
+                    <input type="number" id="nominalValue" value="1" step="1" oninput="calculate()">
                 </div>
                 
                 <div class="input-item">
                     <label for="purchaseAmount">مبلغ الشراء للاتفاقية (ريال عُماني)</label>
-                    <input type="number" id="purchaseAmount" value="19230" step="0.01" oninput="calculate()">
+                    <input type="number" id="purchaseAmount" value="19230" step="1" oninput="calculate()">
                 </div>
                 
                 <div class="input-item">
                     <label for="valuationCap">سقف التقييم بعد الاستثمار (ريال عُماني)</label>
-                    <input type="number" id="valuationCap" value="500000" step="0.01" oninput="calculate()">
+                    <input type="number" id="valuationCap" value="500000" step="1" oninput="calculate()">
                 </div>
-                
+            </div>
+        </div>
+        
+        <div class="input-section">
+            <h3 style="color: #0a3433; margin-bottom: 20px; text-align: right; font-weight: 700;">💰 بيانات الجولة الاستثمارية التالية (اختياري)</h3>
+            
+            <div class="input-group">
                 <div class="input-item">
-                    <label for="seriesAPrice">سعر السهم في الجولة الاستثمارية التالية (ريال عُماني) - اختياري</label>
-                    <input type="number" id="seriesAPrice" value="30" step="0.01" oninput="calculate()">
+                    <label for="seriesAPrice">سعر السهم في الجولة الاستثمارية التالية (ريال عُماني)</label>
+                    <input type="number" id="seriesAPrice" value="30" step="1" oninput="calculate()">
                     <div style="font-size: 12px; color: #6c6d6d; margin-top: 5px; text-align: right;">
                         السعر الذي سيدفعه المستثمرون الجدد لكل سهم في الجولة التالية
                     </div>
                 </div>
                 
                 <div class="input-item">
-                    <label for="seriesAAmount">مبلغ التمويل في الجولة الاستثمارية التالية (ريال عُماني) - اختياري</label>
-                    <input type="number" id="seriesAAmount" value="100000" step="0.01" oninput="calculate()">
+                    <label for="seriesAAmount">مبلغ التمويل في الجولة الاستثمارية التالية (ريال عُماني)</label>
+                    <input type="number" id="seriesAAmount" value="100000" step="1" oninput="calculate()">
                     <div style="font-size: 12px; color: #6c6d6d; margin-top: 5px; text-align: right;">
                         المبلغ الإجمالي الذي ستجمعه الشركة من المستثمرين الجدد
                     </div>
                 </div>
-                
+            </div>
+        </div>
+        
+        <div class="input-section">
+            <h3 style="color: #0a3433; margin-bottom: 20px; text-align: right; font-weight: 700;">🏆 بيانات حدث السيولة (اختياري)</h3>
+            
+            <div class="input-group">
                 <div class="input-item">
-                    <label for="liquidationValue">قيمة حدث السيولة (ريال عُماني) - اختياري</label>
-                    <input type="number" id="liquidationValue" value="600000" step="0.01" oninput="calculate()">
+                    <label for="liquidationValue">قيمة حدث السيولة (ريال عُماني)</label>
+                    <input type="number" id="liquidationValue" value="600000" step="1" oninput="calculate()">
+                    <div style="font-size: 12px; color: #6c6d6d; margin-top: 5px; text-align: right;">
+                        القيمة الإجمالية للشركة عند البيع أو الطرح العام
+                    </div>
                 </div>
             </div>
         </div>
@@ -278,6 +293,10 @@
                 <div class="result-item">
                     <div class="result-label">نسبة الملكية في الشركة</div>
                     <div class="result-value" id="maturityOwnership">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">إجمالي الأسهم في السجل التجاري بعد التحويل</div>
+                    <div class="result-value" id="maturityTotalShares">-</div>
                 </div>
                 <div class="result-item">
                     <div class="result-label">القيمة الاسمية (السجل التجاري)</div>
@@ -315,6 +334,10 @@
                 <div class="result-item">
                     <div class="result-label">نسبة الملكية في الشركة</div>
                     <div class="result-value" id="seriesAOwnership">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">إجمالي الأسهم في السجل التجاري بعد الجولة</div>
+                    <div class="result-value" id="seriesATotalSharesDisplay">-</div>
                 </div>
                 <div class="result-item">
                     <div class="result-label">رأس المال الاسمي (للسجل التجاري)</div>
@@ -406,6 +429,7 @@
             
             document.getElementById('maturityShares').textContent = `${Math.round(maturityShares)} سهم`;
             document.getElementById('maturityOwnership').textContent = `${maturityOwnership.toFixed(2)}%`;
+            document.getElementById('maturityTotalShares').textContent = `${Math.round(totalSharesAfterConversion)} سهم`;
             document.getElementById('newNominalValue').textContent = `${nominalValue.toFixed(2)} ريال عُماني (بدون تغيير)`;
             document.getElementById('sharePremium').textContent = `${sharePremium.toFixed(0)} ريال عُماني`;
             document.getElementById('economicPrice').textContent = `${safePrice.toFixed(2)} ريال عُماني`;
@@ -428,6 +452,7 @@
             document.getElementById('seriesAShares2').textContent = `${Math.round(seriesAOption2)} سهم`;
             document.getElementById('seriesAFinal').textContent = `${Math.round(seriesAFinal)} سهم`;
             document.getElementById('seriesAOwnership').textContent = `${seriesAOwnership.toFixed(2)}%`;
+            document.getElementById('seriesATotalSharesDisplay').textContent = `${Math.round(seriesATotalShares)} سهم`;
             document.getElementById('seriesANominal').textContent = `${seriesANominalCapital.toFixed(0)} ريال عُماني`;
             document.getElementById('seriesAPremium').textContent = `${seriesASharePremium.toFixed(0)} ريال عُماني`;
             
