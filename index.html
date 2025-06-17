@@ -299,7 +299,7 @@
                     <div class="result-value" id="maturityTotalShares">-</div>
                 </div>
                 <div class="result-item">
-                    <div class="result-label">القيمة الاسمية (السجل التجاري)</div>
+                    <div class="result-label">رأس المال الاسمي للمستثمر (للسجل التجاري)</div>
                     <div class="result-value" id="newNominalValue">-</div>
                 </div>
                 <div class="result-item">
@@ -340,7 +340,7 @@
                     <div class="result-value" id="seriesATotalSharesDisplay">-</div>
                 </div>
                 <div class="result-item">
-                    <div class="result-label">رأس المال الاسمي (للسجل التجاري)</div>
+                    <div class="result-label">رأس المال الاسمي للمستثمر (للسجل التجاري)</div>
                     <div class="result-value" id="seriesANominal">-</div>
                 </div>
                 <div class="result-item">
@@ -430,7 +430,7 @@
             document.getElementById('maturityShares').textContent = `${Math.round(maturityShares)} سهم`;
             document.getElementById('maturityOwnership').textContent = `${maturityOwnership.toFixed(2)}%`;
             document.getElementById('maturityTotalShares').textContent = `${Math.round(totalSharesAfterConversion)} سهم`;
-            document.getElementById('newNominalValue').textContent = `${nominalValue.toFixed(2)} ريال عُماني (بدون تغيير)`;
+            document.getElementById('newNominalValue').textContent = `${(maturityShares * nominalValue).toFixed(0)} ريال عُماني`;
             document.getElementById('sharePremium').textContent = `${sharePremium.toFixed(0)} ريال عُماني`;
             document.getElementById('economicPrice').textContent = `${safePrice.toFixed(2)} ريال عُماني`;
             
