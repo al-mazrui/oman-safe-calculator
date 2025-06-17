@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITHCA SAFE Calculator - Simple Agreement for Future Equity Conversion - Oman</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #54c2d6 0%, #00507b 100%);
+            min-height: 100vh;
+            direction: ltr;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="8" r="0.5" fill="rgba(255,255,255,0.08)"/><circle cx="18" cy="15" r="1.5" fill="rgba(255,255,255,0.06)"/><circle cx="5" cy="18" r="0.8" fill="rgba(255,255,255,0.05)"/><circle cx="15" cy="5" r="0.3" fill="rgba(255,255,255,0.07)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+            background-size: 100px 100px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container {
+            background: rgba(241, 243, 244, 0.98);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            padding: 40px;
+            margin: 20px 0;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header-section {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        h1 {
+            color: #00507b;
+            margin-bottom: 8px;
+            font-size: 2.4em;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+        }
+        
+        .main-title {
+            font-weight: 700;
+            color: #00507b;
+        }
+        
+        .brand-subtitle {
+            color: #54c2d6;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .tagline {
+            color: #939598;
+            font-size: 1.1em;
+            font-weight: 300;
+            font-style: italic;
+        }
+        
+        .input-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border-left: 4px solid #54c2d6;
+            box-shadow: 0 8px 25px rgba(84, 194, 214, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .input-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #54c2d6, #00507b);
+            opacity: 0.1;
+            border-radius: 50%;
+            transform: translate(20px, -20px);
+        }
+        
+        .input-section h3 {
+            color: #00507b;
+            margin-bottom: 25px;
+            font-size: 1.3em;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-icon {
+            width: 24px;
+            height: 24px;
+            background: #54c2d6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+        
+        .input-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .input-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            font-weight: 500;
+            color: #00507b;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-align: left;
+            display: block;
+        }
+        
+        input {
+            padding: 15px 18px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #fafbfc;
+            text-align: left;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            width: 100%;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #54c2d6;
+            box-shadow: 0 0 0 4px rgba(84, 194, 214, 0.15);
+            background: white;
+        }
+        
+        input:hover {
+            border-color: #54c2d6;
+            background: white;
+        }
+        
+        .input-help {
+            font-size: 12px;
+            color: #939598;
+            margin-top: 6px;
+            font-weight: 300;
+        }
+        
+        .results-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .scenario-card {
+            background: linear-gradient(135deg, #54c2d6 0%, #00507b 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 80, 123, 0.25);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .scenario-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="ithca-dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="20" cy="15" r="1" fill="rgba(255,255,255,0.06)"/><circle cx="35" cy="8" r="0.8" fill="rgba(255,255,255,0.05)"/><circle cx="15" cy="25" r="1.2" fill="rgba(255,255,255,0.07)"/><circle cx="30" cy="30" r="0.6" fill="rgba(255,255,255,0.04)"/></pattern></defs><rect width="200" height="200" fill="url(%23ithca-dots)"/></svg>') repeat;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+        
+        .scenario-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 80, 123, 0.4);
+        }
+        
+        .scenario-card:active {
+            transform: translateY(-5px) scale(1.01);
+        }
+        
+        .scenario-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .scenario-card h3 {
+            margin: 0 0 20px 0;
+            font-size: 1.5em;
+            text-align: center;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.5px;
+        }
+        
+        .result-item {
+            background: rgba(255,255,255,0.12);
+            padding: 15px 18px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.15);
+            position: relative;
+            z-index: 1;
+            transition: all 0.2s ease;
+        }
+        
+        .result-item:hover {
+            background: rgba(255,255,255,0.18);
+            transform: translateX(3px);
+        }
+        
+        .result-label {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-bottom: 6px;
+            text-align: left;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+        
+        .result-value {
+            font-size: 20px;
+            font-weight: 600;
+            text-align: right;
+            direction: ltr;
+            letter-spacing: 0.5px;
+        }
+        
+        .calculation-details {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border-left: 4px solid #54c2d6;
+            box-shadow: 0 8px 25px rgba(84, 194, 214, 0.12);
+        }
+        
+        .calculation-details h3 {
+            color: #00507b;
+            margin-bottom: 20px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 1.3em;
+        }
+        
+        .formula {
+            background: #00507b;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 12px 0;
+            font-family: 'Roboto', monospace;
+            font-size: 14px;
+            text-align: left;
+            direction: ltr;
+            font-weight: 400;
+            border-left: 4px solid #54c2d6;
+            transition: all 0.2s ease;
+        }
+        
+        .formula:hover {
+            background: #003d5c;
+            transform: translateX(3px);
+        }
+        
+        .warning {
+            background: linear-gradient(135deg, #dabf6a, #c4a856);
+            border: none;
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: left;
+            font-weight: 400;
+            box-shadow: 0 8px 25px rgba(218, 191, 106, 0.25);
+        }
+        
+        .warning strong {
+            font-weight: 600;
+        }
+        
+        .export-btn {
+            background: linear-gradient(135deg, #54c2d6 0%, #00507b 100%);
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 25px;
+            font-family: 'Roboto', sans-serif;
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 25px rgba(84, 194, 214, 0.3);
+        }
+        
+        .export-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(84, 194, 214, 0.5);
+            background: linear-gradient(135deg, #4bb8cc 0%, #004066 100%);
+        }
+        
+        .export-btn:active {
+            transform: translateY(-2px) scale(1.03);
+        }
+        
+        .scenario-description {
+            background: rgba(255,255,255,0.08);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            z-index: 1;
+            line-height: 1.5;
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-section">
+            <h1><span class="main-title">ITHCA SAFE Calculator</span></h1>
+            <div class="brand-subtitle">ITHCA GROUP</div>
+            <div class="tagline">"We Invest in the Future"</div>
+        </div>
+        
+        <div style="background: white; padding: 30px; border-radius: 15px; margin-bottom: 30px; border-left: 4px solid #54c2d6; box-shadow: 0 8px 25px rgba(84, 194, 214, 0.12);">
+            <h3 style="color: #00507b; margin-bottom: 20px; text-align: left; font-weight: 500; font-size: 1.3em;">📖 What is a Simple Agreement for Future Equity (SAFE)?</h3>
+            <p style="text-align: left; margin-bottom: 15px; color: #00507b; line-height: 1.6; font-weight: 300;">
+                A <strong>Simple Agreement for Future Equity (SAFE)</strong> is an investment instrument that grants the investor the right to receive shares in the company in the future when one of the following events occurs:
+            </p>
+            <ul style="text-align: left; color: #00507b; margin-left: 20px; line-height: 1.6; font-weight: 300;">
+                <li><strong>Maturity Date:</strong> Automatic conversion after a specified period (usually two years)</li>
+                <li><strong>Equity Financing:</strong> When the company raises additional funds from new investors</li>
+                <li><strong>Liquidity Event:</strong> When the company is sold or goes public</li>
+            </ul>
+            <p style="text-align: left; color: #939598; font-size: 14px; margin-top: 20px; font-weight: 300; font-style: italic;">
+                This calculator helps you understand how your investment converts to shares in each scenario
+            </p>
+        </div>
+        
+        <div class="input-section">
+            <h3><span class="section-icon">📊</span>Core SAFE Agreement Data</h3>
+            
+            <div class="input-group">
+                <div class="input-item">
+                    <label for="currentShares">Current Outstanding Shares</label>
+                    <input type="number" id="currentShares" value="20000" step="1" oninput="calculate()">
+                </div>
+                
+                <div class="input-item">
+                    <label for="nominalValue">Current Nominal Value (OMR)</label>
+                    <input type="number" id="nominalValue" value="1" step="1" oninput="calculate()">
+                </div>
+                
+                <div class="input-item">
+                    <label for="purchaseAmount">Purchase Amount (OMR)</label>
+                    <input type="number" id="purchaseAmount" value="19230" step="1" oninput="calculate()">
+                </div>
+                
+                <div class="input-item">
+                    <label for="valuationCap">Post-Money Valuation Cap (OMR)</label>
+                    <input type="number" id="valuationCap" value="500000" step="1" oninput="calculate()">
+                </div>
+            </div>
+        </div>
+        
+        <div class="input-section">
+            <h3 style="color: #00507b; margin-bottom: 20px; text-align: left; font-weight: 700;">💰 Next Investment Round Data (Optional)</h3>
+            
+            <div class="input-group">
+                <div class="input-item">
+                    <label for="seriesAPrice">Share Price in Next Investment Round (OMR)</label>
+                    <input type="number" id="seriesAPrice" value="30" step="1" oninput="calculate()">
+                    <div style="font-size: 12px; color: #6c6d6d; margin-top: 5px; text-align: left;">
+                        The price that new investors will pay per share in the next round
+                    </div>
+                </div>
+                
+                <div class="input-item">
+                    <label for="seriesAAmount">Funding Amount in Next Investment Round (OMR)</label>
+                    <input type="number" id="seriesAAmount" value="100000" step="1" oninput="calculate()">
+                    <div style="font-size: 12px; color: #6c6d6d; margin-top: 5px; text-align: left;">
+                        Total amount the company will raise from new investors
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="input-section">
+            <h3 style="color: #00507b; margin-bottom: 20px; text-align: left; font-weight: 700;">🏆 Liquidity Event Data (Optional)</h3>
+            
+            <div class="input-group">
+                <div class="input-item">
+                    <label for="liquidationValue">Liquidity Event Value (OMR)</label>
+                    <input type="number" id="liquidationValue" value="600000" step="1" oninput="calculate()">
+                    <div style="font-size: 12px; color: #6c6d6d; margin-top: 5px; text-align: left;">
+                        Total company value at sale or IPO
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="results-section">
+            <div class="scenario-card">
+                <h3>📈 Scenario 1: Automatic Conversion at Maturity Date</h3>
+                <div class="scenario-description">
+                    <strong>When does this happen?</strong> If the company doesn't raise additional funds or sell the company before the maturity date, the SAFE automatically converts to ordinary shares.
+                </div>
+                <div class="result-item">
+                    <div class="result-label">SAFE Price per Share</div>
+                    <div class="result-value" id="safePrice">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Number of Shares Received</div>
+                    <div class="result-value" id="maturityShares">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Ownership Percentage in Company</div>
+                    <div class="result-value" id="maturityOwnership">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Total Shares in Commercial Register After Conversion</div>
+                    <div class="result-value" id="maturityTotalShares">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Investor's Nominal Capital (Commercial Register)</div>
+                    <div class="result-value" id="newNominalValue">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Share Premium</div>
+                    <div class="result-value" id="sharePremium">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Economic Price per Share</div>
+                    <div class="result-value" id="economicPrice">-</div>
+                </div>
+            </div>
+            
+            <div class="scenario-card">
+                <h3>💰 Scenario 2: Conversion at Equity Financing (New Investment Round)</h3>
+                <div class="scenario-description">
+                    <strong>When does this happen?</strong> When the company raises additional funds from new investors before the maturity date. 
+                    <br><strong>Example:</strong> If new investors pay OMR 30/share, the SAFE holder gets the better option: (1) shares at OMR 30 or (2) shares at SAFE price (OMR 25).
+                    <br><strong>From the contract - Section 3:</strong> "If equity financing occurs before the maturity date, the SAFE will automatically convert to ordinary shares"
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Option 1: Shares at Next Round Price</div>
+                    <div class="result-value" id="seriesAShares1">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Option 2: Shares at SAFE Price (Investor Protection)</div>
+                    <div class="result-value" id="seriesAShares2">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Final Shares Received (Higher of the Two Options)</div>
+                    <div class="result-value" id="seriesAFinal">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Ownership Percentage in Company</div>
+                    <div class="result-value" id="seriesAOwnership">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Total Shares in Commercial Register After Round</div>
+                    <div class="result-value" id="seriesATotalSharesDisplay">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Investor's Nominal Capital (Commercial Register)</div>
+                    <div class="result-value" id="seriesANominal">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Share Premium</div>
+                    <div class="result-value" id="seriesAPremium">-</div>
+                </div>
+            </div>
+            
+            <div class="scenario-card">
+                <h3>🏆 Scenario 3: Liquidity Event (Company Sale or IPO)</h3>
+                <div class="scenario-description">
+                    <strong>When does this happen?</strong> When the company is sold or goes public before the SAFE terminates. 
+                    <br><strong>From the contract - Section 5:</strong> "The investor is automatically entitled to receive their portion of the proceeds in case of a liquidity event before termination of the SAFE"
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Liquidity Price per Share</div>
+                    <div class="result-value" id="liquidityPrice">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Option 1: Return of Purchase Amount</div>
+                    <div class="result-value" id="liquidityOption1">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Option 2: Value of Converted Shares in Liquidity</div>
+                    <div class="result-value" id="liquidityOption2">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Final Proceeds Received (Higher of the Two Options)</div>
+                    <div class="result-value" id="liquidityFinal">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Return on Investment Percentage</div>
+                    <div class="result-value" id="liquidityROI">-</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Investment Multiple</div>
+                    <div class="result-value" id="liquidityMultiple">-</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="calculation-details">
+            <h3>🧮 Formula Reference</h3>
+            <div class="formula">SAFE Price = Post-Money Valuation Cap ÷ Company Capitalization</div>
+            <div class="formula">Maturity Shares = Purchase Amount ÷ SAFE Price</div>
+            <div class="formula">Equity Financing Conversion = Max(Purchase Amount ÷ Equity Financing Price, Purchase Amount ÷ SAFE Price)</div>
+            <div class="formula">Liquidity Price = Post-Money Valuation Cap ÷ Current Outstanding Shares</div>
+            <div class="formula">Share Premium = Purchase Amount - (Shares × Nominal Value)</div>
+            <div class="formula">Economic Price per Share = Purchase Amount ÷ Shares Received</div>
+            <div class="formula">Commercial Register shows nominal value (1 OMR), Share Premium recorded separately</div>
+        </div>
+        
+        <div class="warning">
+            <strong>⚠️ Important Notes:</strong><br>
+            • The Commercial Register maintains nominal value of 1 OMR as a "legal requirement"<br>
+            • Economic pricing occurs through the Share Premium structure<br>
+            • Investors value the company independently of the Commercial Register book value<br>
+            • Share Premium is recorded as capital reserves in the company's books<br>
+            • Conversion requires unanimous shareholder approval under Omani Commercial Companies Law<br>
+            • This tool is not an official ITHCA website. It is a demonstration website created for educational purposes only - consult legal counsel for actual transactions
+        </div>
+        
+        <button class="export-btn" onclick="exportToCSV()">📊 Export Results to CSV</button>
+    </div>
+
+    <script>
+        function calculate() {
+            const currentShares = parseFloat(document.getElementById('currentShares').value) || 0;
+            const nominalValue = parseFloat(document.getElementById('nominalValue').value) || 0;
+            const purchaseAmount = parseFloat(document.getElementById('purchaseAmount').value) || 0;
+            const valuationCap = parseFloat(document.getElementById('valuationCap').value) || 0;
+            const seriesAPrice = parseFloat(document.getElementById('seriesAPrice').value) || 0;
+            const seriesAAmount = parseFloat(document.getElementById('seriesAAmount').value) || 0;
+            const liquidationValue = parseFloat(document.getElementById('liquidationValue').value) || 0;
+            
+            // Calculate SAFE price
+            const safePrice = valuationCap / currentShares;
+            document.getElementById('safePrice').textContent = `OMR ${safePrice.toFixed(2)}`;
+            
+            // Scenario 1: Conversion at maturity
+            const maturityShares = purchaseAmount / safePrice;
+            const totalSharesAfterConversion = currentShares + maturityShares;
+            const maturityOwnership = (maturityShares / totalSharesAfterConversion) * 100;
+            
+            // Calculate share premium (Omani VC practice)
+            const sharePremium = purchaseAmount - (maturityShares * nominalValue);
+            
+            document.getElementById('maturityShares').textContent = `${Math.round(maturityShares)} shares`;
+            document.getElementById('maturityOwnership').textContent = `${maturityOwnership.toFixed(2)}%`;
+            document.getElementById('maturityTotalShares').textContent = `${Math.round(totalSharesAfterConversion)} shares`;
+            document.getElementById('newNominalValue').textContent = `OMR ${(maturityShares * nominalValue).toFixed(0)}`;
+            document.getElementById('sharePremium').textContent = `OMR ${sharePremium.toFixed(0)}`;
+            document.getElementById('economicPrice').textContent = `OMR ${safePrice.toFixed(2)}`;
+            
+            // Scenario 2: Equity financing
+            const seriesAOption1 = purchaseAmount / seriesAPrice;
+            const seriesAOption2 = purchaseAmount / safePrice;
+            const seriesAFinal = Math.max(seriesAOption1, seriesAOption2);
+            
+            // Calculate total shares after new funding
+            const newInvestorShares = seriesAAmount / seriesAPrice; // Shares that new investors will buy
+            const seriesATotalShares = currentShares + seriesAFinal + newInvestorShares;
+            const seriesAOwnership = (seriesAFinal / seriesATotalShares) * 100;
+            
+            // Calculate equity financing share premium structure
+            const seriesANominalCapital = seriesAFinal * nominalValue;
+            const seriesASharePremium = purchaseAmount - seriesANominalCapital;
+            
+            document.getElementById('seriesAShares1').textContent = `${Math.round(seriesAOption1)} shares`;
+            document.getElementById('seriesAShares2').textContent = `${Math.round(seriesAOption2)} shares`;
+            document.getElementById('seriesAFinal').textContent = `${Math.round(seriesAFinal)} shares`;
+            document.getElementById('seriesAOwnership').textContent = `${seriesAOwnership.toFixed(2)}%`;
+            document.getElementById('seriesATotalSharesDisplay').textContent = `${Math.round(seriesATotalShares)} shares`;
+            document.getElementById('seriesANominal').textContent = `OMR ${seriesANominalCapital.toFixed(0)}`;
+            document.getElementById('seriesAPremium').textContent = `OMR ${seriesASharePremium.toFixed(0)}`;
+            
+            // Scenario 3: Liquidity event
+            const liquidityPrice = liquidationValue / currentShares;
+            const liquidityOption1 = purchaseAmount;
+            const liquidityOption2 = maturityShares * liquidityPrice;
+            const liquidityFinal = Math.max(liquidityOption1, liquidityOption2);
+            const liquidityROI = ((liquidityFinal - purchaseAmount) / purchaseAmount) * 100;
+            const liquidityMultiple = liquidityFinal / purchaseAmount;
+            
+            document.getElementById('liquidityPrice').textContent = `OMR ${liquidityPrice.toFixed(2)}`;
+            document.getElementById('liquidityOption1').textContent = `OMR ${liquidityOption1.toFixed(0)}`;
+            document.getElementById('liquidityOption2').textContent = `OMR ${liquidityOption2.toFixed(0)}`;
+            document.getElementById('liquidityFinal').textContent = `OMR ${liquidityFinal.toFixed(0)}`;
+            document.getElementById('liquidityROI').textContent = `${liquidityROI.toFixed(1)}%`;
+            document.getElementById('liquidityMultiple').textContent = `${liquidityMultiple.toFixed(1)}x`;
+        }
+        
+        function exportToCSV() {
+            const currentShares = parseFloat(document.getElementById('currentShares').value) || 0;
+            const nominalValue = parseFloat(document.getElementById('nominalValue').value) || 0;
+            const purchaseAmount = parseFloat(document.getElementById('purchaseAmount').value) || 0;
+            const valuationCap = parseFloat(document.getElementById('valuationCap').value) || 0;
+            const seriesAPrice = parseFloat(document.getElementById('seriesAPrice').value) || 0;
+            
+            const safePrice = valuationCap / currentShares;
+            const maturityShares = purchaseAmount / safePrice;
+            const totalSharesAfterConversion = currentShares + maturityShares;
+            const maturityOwnership = (maturityShares / totalSharesAfterConversion) * 100;
+            const sharePremium = purchaseAmount - (maturityShares * nominalValue);
+            
+            const csvContent = [
+                ['SAFE Conversion Calculator Results'],
+                [''],
+                ['Input Parameters'],
+                ['Current Outstanding Shares', currentShares],
+                ['Current Nominal Value (OMR)', nominalValue],
+                ['SAFE Purchase Amount (OMR)', purchaseAmount],
+                ['Post-Money Valuation Cap (OMR)', valuationCap],
+                ['Equity Financing Price per Share (OMR)', seriesAPrice],
+                [''],
+                ['Calculated Results'],
+                ['SAFE Price per Share (OMR)', safePrice.toFixed(4)],
+                ['Shares at Maturity', Math.round(maturityShares)],
+                ['Ownership Percentage', maturityOwnership.toFixed(2) + '%'],
+                ['Share Premium (OMR)', sharePremium.toFixed(0)],
+                ['Nominal Value (unchanged)', nominalValue.toFixed(2) + ' OMR'],
+                [''],
+                ['Formulas Used'],
+                ['SAFE Price = Valuation Cap ÷ Current Shares'],
+                ['Maturity Shares = Purchase Amount ÷ SAFE Price'],
+                ['Ownership % = Maturity Shares ÷ (Current Shares + Maturity Shares)'],
+                ['Share Premium = Purchase Amount - (Maturity Shares × Nominal Value)']
+            ].map(row => row.join(',')).join('\n');
+            
+            const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'safe_conversion_calculator_english.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+        
+        // Initial calculation
+        calculate();
+    </script>
+</body>
+</html>
