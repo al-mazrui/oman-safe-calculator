@@ -233,16 +233,16 @@
         </div>
         
         <div class="input-section">
-            <h3 style="color: #0a3433; margin-bottom: 20px; text-align: right; font-weight: 700;">📊 بيانات الاتفاقية الأساسية</h3>
+            <h3 style="color: #0a3433; margin-bottom: 20px; text-align: right; font-weight: 700;">📊 بيانات السجل التجاري و بيانات الاتفاقية الأساسية</h3>
             
             <div class="input-group">
                 <div class="input-item">
-                    <label for="currentShares">الأسهم القائمة الحالية</label>
+                    <label for="currentShares">عدد الحصص حسب السجل التجاري</label>
                     <input type="number" id="currentShares" value="20000" step="1" oninput="calculate()">
                 </div>
                 
                 <div class="input-item">
-                    <label for="nominalValue">القيمة الاسمية الحالية (ريال عُماني)</label>
+                    <label for="nominalValue">القيمة الاسمية الحالية للحصص حسب السجل التجاري (ريال عُماني)</label>
                     <input type="number" id="nominalValue" value="1" step="1" oninput="calculate()">
                 </div>
                 
@@ -263,10 +263,10 @@
             
             <div class="input-group">
                 <div class="input-item">
-                    <label for="seriesAPrice">سعر السهم في الجولة الاستثمارية التالية (ريال عُماني)</label>
+                    <label for="seriesAPrice">سعر الحصة في الجولة الاستثمارية التالية (ريال عُماني)</label>
                     <input type="number" id="seriesAPrice" value="30" step="1" oninput="calculate()">
                     <div style="font-size: 12px; color: #6c6d6d; margin-top: 5px; text-align: right;">
-                        السعر الذي سيدفعه المستثمرون الجدد لكل سهم في الجولة التالية
+                        السعر الذي سيدفعه المستثمرون الجدد لكل حصة في الجولة التالية
                     </div>
                 </div>
                 
@@ -305,15 +305,15 @@
                     <div class="result-value" id="safePrice">-</div>
                 </div>
                 <div class="result-item">
-                    <div class="result-label">عدد الأسهم المستلمة</div>
+                    <div class="result-label">عدد الأسهم المستحقة للمستثمر</div>
                     <div class="result-value" id="maturityShares">-</div>
                 </div>
                 <div class="result-item">
-                    <div class="result-label">نسبة الملكية في الشركة</div>
+                    <div class="result-label">نسبة ملكية المستثمر في الشركة</div>
                     <div class="result-value" id="maturityOwnership">-</div>
                 </div>
                 <div class="result-item">
-                    <div class="result-label">إجمالي الأسهم في السجل التجاري بعد التحويل</div>
+                    <div class="result-label">إجمالي عدد الحصص في السجل التجاري بعد التحويل</div>
                     <div class="result-value" id="maturityTotalShares">-</div>
                 </div>
                 <div class="result-item">
@@ -325,7 +325,7 @@
                     <div class="result-value" id="sharePremium">-</div>
                 </div>
                 <div class="result-item">
-                    <div class="result-label">السعر الاقتصادي/السهم</div>
+                    <div class="result-label">السعر الاقتصادي/الحصة</div>
                     <div class="result-value" id="economicPrice">-</div>
                 </div>
             </div>
